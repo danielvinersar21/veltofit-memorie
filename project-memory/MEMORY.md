@@ -3,7 +3,7 @@
 - [**BACKLOGUL**](../../../repos/velto-webapp/docs/plans/backlog.md) — lista unică de lucruri deschise, în repo la `docs/plans/backlog.md`. Reconciliat 2026-09-06 din toate cele 62 de note. Când owner-ul zice „trece pe backlog", acolo se scrie. Notele de aici rămân arhiva; fișierul ăla e indexul.
 
 - [Backlog: review round 2026-08-20](backlog-review-round-2026-08-20.md) — 5 findings from the first agent review round, judged real and **deliberately deferred**, each with its reason. Not oversights — read before re-reporting them.
-- [Backlog: memory has NO backup](backlog-memory-has-no-backup.md) — **MUST DO**, owner confirmed 2026-08-29. All 48 memory files exist in one copy on one laptop: not in git, no Time Machine, not in iCloud. Destination + the design tradeoff are worked out in the note.
+- [Backup-ul memoriei](backlog-memory-has-no-backup.md) — ✅ FĂCUT 22 sep: repo PRIVAT separat `veltofit-memorie`, automat la fiecare push (hook, în fundal) + `npm run memory:backup`. Nu în repo-ul aplicației: notele au emailuri reale.
 - [Workshop exchange with Ionuț](workshop-exchange-ionut.md) — cousin's PrintBox manual + 15-question grid, 2026-08-29. Ours scored 5 DA / 6 PARȚIAL / 4 NU and was sent back. What we lack, ordered by cost; nothing adopted yet, deliberately.
 - [Backlog: focus a11y sweep](backlog-focus-a11y-sweep.md) — 14 sites app-wide with NO keyboard focus indicator, file+line listed. Owner DEFERRED 2026-08-20; don't re-propose unprompted.
 - [Use the project agents by default](use-project-agents-by-default.md) — owner's standing instruction 2026-08-20: follow CLAUDE.md §4 routing, don't ask each time; flag it up front if a session rule blocks agents.

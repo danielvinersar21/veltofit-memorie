@@ -1,12 +1,32 @@
 ---
 name: backlog-memory-has-no-backup
-description: "MUST DO, not optional: the 48 memory files exist in exactly one copy on one laptop with no backup of any kind. Owner confirmed 2026-08-29 it needs doing; not started."
+description: "DONE 2026-09-22: memory is backed up to the separate PRIVATE repo danielvinersar21/veltofit-memorie, automatically on every velto-webapp push (pre-push hook, background) and via npm run memory:backup."
 metadata: 
   node_type: memory
   type: project
   originSessionId: dec69265-dcee-4170-8138-beb9b84c8c1d
   modified: 2026-08-29T18:56:53.535Z
 ---
+
+## ✅ DONE 2026-09-22 — but NOT where this note planned
+
+**Destination changed by the owner: a SEPARATE private repo, `danielvinersar21/veltofit-memorie`**,
+not `.claude/memory/notes/` in the app repo. Reason found while doing it: 13 notes hold real
+people's email addresses (trainers, friends, family, test accounts) — in the app repo they'd be
+in history forever and visible to every collaborator and to Vercel's build servers.
+
+- Local clone: `~/.claude/memory-backup` (`project-memory/` ← this folder, `agent-memory/` ←
+  `~/.claude/agent-memory`). README there has restore steps for a new laptop.
+- `scripts/memory-backup.sh` (in velto-webapp): rsync → commit → push, never fails loudly, no-op
+  on machines without the clone. Run by `.githooks/pre-push` in the background (log:
+  `~/.claude/memory-backup.log`) and by `npm run memory:backup`.
+- First backup 2026-09-22 14:07: 76 + 10 files, verified identical to the live folder.
+
+Still true: Time Machine is not configured — this backs up the notes, not the laptop.
+
+---
+
+_Original note, kept for the reasoning:_
 
 **Status: TO DO, confirmed by the owner 2026-08-29 as something that must be done — not a
 "maybe". Not started. Do not close this by arguing it's low risk.**
