@@ -49,7 +49,10 @@ vitrina, factura rămâne în moneda de integrare. Nu e nimic de convertit în S
 - cele trei tente ale benzii de termen au aceeași deschidere — la scanare rapidă
   nu se disting. Regula „nu doar culoarea" **e** respectată (banda scrie textul).
 
-**Proba finală, 8 octombrie 2026** (prima încasare reală așteptată): deschide
+**Proba finală — MUTATĂ (2026-09-22):** owner-ul își anulează abonamentul de test („nu are
+sens să fac o factură manuală către mine"), deci pe 8 octombrie nu mai vine nicio încasare.
+Proba se face la **prima încasare de la un antrenor real** — alerta „PRIMA, emite factura în
+SOLO" o anunță ([[owner-alerts]]). Pașii rămân: deschide
 Stripe → Payments, numără plățile cu sumă > 0 din săptămână, compară cu
 `SELECT count(*) FROM public.admin_payments_list(false, true)`. Verifică și
 SUMELE, nu doar numărul de rânduri — o factură cu pro-rată nu e prețul de listă.

@@ -11,7 +11,7 @@ metadata:
 Built on branch `test/e2e-suite`, **still uncommitted**. Includes app fixes in `src/` that belong in main regardless of the suite.
 
 ## The suite
-**Now 20 tests** (was 13), after the superset work on 2026-08-15 added four specs:
+**Recounted 2026-09-22: 8 specs, 17 runnable tests + 1 `test.fixme`, plus 3 setup steps and 1 teardown** (the older "20 tests" figure counted differently). The superset work on 2026-08-15 added four specs:
 `client/superset.spec.ts` (grouped workout + finishing one — nothing had ever completed a
 workout before), `trainer/superset-builder.spec.ts`, `trainer/superset-copy.spec.ts` (clone +
 copy-week), `trainer/plan-wizard.spec.ts` (the whole build-a-plan flow + publish guard, which

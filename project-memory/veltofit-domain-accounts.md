@@ -1,6 +1,6 @@
 ---
 name: veltofit-domain-accounts
-description: "Ce e legat la domeniul veltofit.app — Google Workspace (MX!), două conturi Google verificate, MailerLite, și DMARC care lipsește. Descoperit din DNS 2026-09-07, nu era nicăieri scris."
+description: "Ce e legat la domeniul veltofit.app — Google Workspace (MX!), două conturi Google verificate, MailerLite, și DMARC — PUS de owner pe 2026-09-07 (p=none). Descoperit din DNS 2026-09-07. ⚠️ Descrierea veche zicea „DMARC lipsește" și a indus în eroare o sesiune pe 22 sep."
 metadata: 
   node_type: memory
   type: reference
