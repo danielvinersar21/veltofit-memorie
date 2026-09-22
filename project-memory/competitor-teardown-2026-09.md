@@ -39,3 +39,5 @@ Related: [[launch-gtm-decision]] (the other two RO competitors),
 [[notifications-never-worked]] (why the passive last-seen signal matters more
 than another notification channel), [[roadmap-features-v1]] via
 `docs/plans/roadmap-features-v1.md` (calendar was already vision; i-am-pt shipped it).
+
+**2026-09-22: al patrulea concurent, My PT Hub** (UK, grupul EverCommerce, ~105 $/lună, clienți nelimitați, funcții pe care Veltofit nu le are). Îl folosește un antrenor abordat în DM, deci unii antrenori români plătesc deja pentru așa ceva. Nu ne comparăm pe funcții. Detalii în `docs/plans/competitor-teardown-v1.md` §7, NEVERIFICATE pe site-ul lor. **Același antrenor, pe vocal:** i-ar fi plăcut exercițiile și meniul în română, iar în rest My PT Hub i se pare „foarte complexă și foarte bine structurată”. E un compliment, deci simplitatea nu e argument. E exact golul pe care îl acoperă Veltofit, deci e primul argument de poziționare venit de la un antrenor real. Pe social se folosește doar atribuit. **Decizii ale owner-ului pe 22 sep:** numele săptămânilor (etapele) intră pe backlog. Cele 13 exerciții în engleză rămân cum sunt, deliberat, deci nu le repropune.

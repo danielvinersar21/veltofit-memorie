@@ -60,7 +60,7 @@
 - [Citește regulile de social din fișier](feedback-social-rules-read-the-file.md) — owner 2026-09-06: skill încărcat ≠ reguli citite; `social-reviewer` rulează ÎNAINTE de a-i arăta, nu după.
 - [Instagram content brief](instagram-content-brief.md) — cele 50 de postări triate: 9 păstrez / 19 refac / 22 șterg, aprobat 2026-09-02. Ce nu se mai poate afirma niciodată, și de ce.
 - [Owner was never a personal trainer](owner-never-a-personal-trainer.md) — confirmat 2026-09-02. Persoana întâi doar despre ce construiește, niciodată despre antrenorat.
-- [Competitor teardown 2026-09](competitor-teardown-2026-09.md) — al treilea concurent RO e **din Alba Iulia** și are zero utilizatori, declarat pe propriul site. Plus ce merită luat de la Trainerize. Lista completă în `docs/plans/competitor-teardown-v1.md`.
+- [Competitor teardown 2026-09](competitor-teardown-2026-09.md) — al treilea concurent RO e **din Alba Iulia** și are zero utilizatori, declarat pe propriul site. Plus ce merită luat de la Trainerize. Lista completă în `docs/plans/competitor-teardown-v1.md`. **+ My PT Hub (22 sep, aflat de la un antrenor în DM).**
 - [Two hosts are one product](two-hosts-are-one-product.md) — owner 2026-09-03: dashboard=desktop, app=mobile, ONE product that should share everything. A feature on one host only is a GAP, not a decision. The per-origin session is the single real exception.
 - [Instagram reels animate](instagram-reels-animate.md) — starea materialelor de social. **3 PUBLICATE (confirmat 2026-09-21): prezentare, partea clientului, cine sunt.** Doctrina + uneltele sunt în skill-ul `velto-social`; nota ține starea și preferințele owner-ului.
 - [Stripe webhooks need the CLI locally](stripe-webhooks-need-cli-locally.md) — a local payment succeeds and STILL leaves the account on Free; the webhook cannot reach a laptop. `stripe listen` is the bridge. Say it BEFORE anyone tests a payment locally.
@@ -79,3 +79,4 @@
 - [Abonamentul în admin](admin-trainer-billing.md) — LIVE 22 sep: SQL aplicat + verificat, codul urcat (ef6e1c0). Cardul „Abonament” pe pagina antrenorului; modul Stripe live/test doar dedus.
 - [Alertele pentru owner](owner-alerts.md) — LIVE 22 sep (65f1433): emailuri FĂRĂ nume/email/oraș (decizia owner-ului), la contact@. Testul real: vezi nota.
 - [Emailuri de onboarding în MailerLite](onboarding-emails-mailerlite.md) — decis 22 sep: secvența în MailerLite, „Daniel de la Veltofit”, doar nume/email/pachet, doar antrenorii noi. În lucru.
+- [DM-uri fără diacritice](feedback-dm-without-diacritics.md) — owner 2026-09-22: DM-urile către antrenori fără diacritice („mai natural”); tot restul, cu.

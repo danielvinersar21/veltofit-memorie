@@ -28,4 +28,4 @@ alert; no trial-ending / seat-wall alerts (no cron).
 **Code PUSHED 2026-09-22** as `4fb55e4` (feature + webhook) `407c68e` (privacy) `65f1433`
 (backlog); pre-push green. First
 real-world test planned right after deploy: a fresh trainer signup on prod → expect
-„Antrenor nou pe Veltofit" at contact@ (check Spam: no DMARC yet), then delete it.
+„Antrenor nou pe Veltofit" at contact@ (DMARC IS set since 7 Sep, p=none; a Gmail filter on the sender also marks "never spam"), then delete it.
