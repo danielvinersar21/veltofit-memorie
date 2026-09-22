@@ -1,0 +1,31 @@
+---
+name: backlog-supabase-db-health
+description: "Supabase DB health — CLOSED 2026-07-27 except a conditional NANO-sizing watch: CRITICAL RLS-bypass view fix APPLIED (siblings clean) + performance indexes APPLIED (reconciled against live schema). Revisit instance size only if throttling recurs."
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: 18f11716-6252-4229-81f7-dc1a12808b66
+  modified: 2026-07-27T14:32:33.988Z
+---
+
+On 2026-07-24 the prod Supabase project `veltofit-db` went **Unhealthy** while the user was at the gym — client app "nu se mai încărca". Investigated; three related threads, all fixes staged but **deferred** (user: "keep in backlog, more important testing to do"). Apply when there's time. Nothing applied yet.
+
+**1. 🟠 Incident: NANO instance saturated.** Overview showed COMPUTE=NANO (`t4g.nano`, ~0.5GB RAM, burstable CPU-on-credits), **CPU 100%**, Unhealthy, **7.2% success rate** (979/986 API-gateway errors), conns 6/60 (pool fine). Cause: hot queries seq-scan+sort on un-indexed FK columns → burned CPU credits + Disk-IO budget → throttled to baseline → Postgres unhealthy → gateway errors. Immediate recovery = restart DB (Settings→General). NANO is likely outgrown (20+ clients + growing session history) — consider Micro/Small IF credit-throttling recurs after indexes, but do indexes FIRST.
+
+**2. 🟠 Missing indexes.** Root cause of the CPU burn. Postgres doesn't auto-index FKs. Staged SQL: `docs/database/perf_indexes.sql` (repo, UNCOMMITTED). 15 indexes, `CREATE INDEX IF NOT EXISTS` (safe/re-runnable). Hottest: `workout_sessions (client_id,status,started_at DESC)` + `(client_id,status,completed_at DESC)` — the client-app critical path (`getActiveSession`). Also plan hierarchy FKs (plan_weeks.plan_id, plan_days.week_id, plan_day_exercises.day_id), workout_exercises.workout_id, trainer_clients, client_measurements, notifications, invites, plans, etc. Run STEP 0 diagnostic in the file first. Apply after DB is healthy.
+   - NOTE: Supabase AI mis-diagnosed by sorting pg_stat_statements on `shared_blks_read` (disk) — but cached small-table seq-scans are buffer HITS (invisible to that metric) yet CPU-heavy. To confirm the CPU hog, sort by `total_exec_time DESC` and `calls DESC` (should surface a `workout_sessions ... order by started_at` with high mean_ms).
+
+**3. 🔴 CRITICAL security fix — RLS bypass via SECURITY DEFINER view.** Staged SQL: `docs/database/security_fix_client_measurements.sql` (repo, UNCOMMITTED). `public.client_measurements` is a plain passthrough VIEW over base table `measurements` (`SELECT id, user_id AS client_id, ... FROM measurements`, NO filter) but is SECURITY DEFINER → bypasses base-table RLS. The app reads/writes measurements THROUGH this view (`measurements-api.ts`, also progress-api), so the app path was UNPROTECTED: any authed user could read/insert other clients' body measurements by passing a different `client_id` (app-layer `.eq('client_id')` is NOT a security boundary). Base table `measurements` already HAS correct RLS (`measurements_own` = user_id=auth.uid(); `measurements_trainer` = via trainer_clients status='active'). Fix = 2 lines: `alter table public.measurements enable row level security;` (idempotent) + `alter view public.client_measurements set (security_invoker = on);`. Then verify a client session reading another client's rows returns 0.
+   - **✅ APPLIED 2026-07-27.** `alter view public.client_measurements set (security_invoker = on)` ran; verified via `pg_class.reloptions = {security_invoker=on}` (NB Postgres stores it as `=on`, not `=true` — a `like '%security_invoker=true%'` detector gives a FALSE negative; match `=on` OR `=true`). Cross-client body-measurements bypass is closed.
+   - **✅ SIBLING CHECK done 2026-07-27:** `client_plan_progress` and `client_profiles` are NOT views — they are base TABLES with RLS already enabled (`relrowsecurity=true`). No definer bypass, no fix needed. `client_measurements` was the only vulnerable `client_*` surface. Repo `security_fix_client_measurements.sql` footnote updated to record this.
+   - Optional remaining: functional app check (client measurements screen still loads own data + save works through the invoker view).
+
+Reusable insight: **the app-layer `.eq('client_id')` filter is NOT security — RLS is.** Any SECURITY DEFINER view over an RLS-protected table re-opens the hole.
+
+UPDATE 2026-07-27 (PM status pass): none of the 3 fixes applied to Supabase yet — still deferred. Repo status changed: `security_fix_client_measurements.sql` is now COMMITTED (no longer untracked); `perf_indexes.sql` + the spartan seed remain untracked. Committing the SQL ≠ applying it in Supabase — the CRITICAL RLS hole and the missing indexes are still live in prod until run in the SQL editor.
+UPDATE 2026-07-27 (apply session): items 2 & 3 BOTH ✅ APPLIED.
+  - Item 3 (CRITICAL RLS) ✅ applied + verified (reloptions={security_invoker=on}); siblings ✅ clean (tables w/ RLS).
+  - Item 2 (indexes) ✅ applied. IMPORTANT: did NOT run the original 15-index draft — diagnosed against live schema first (FK-without-covering-index + full pg_indexes dump) and found ~11 of the 15 were REDUNDANT (PK/UNIQUE-backed or already-present FK indexes → would create duplicates, bad on NANO), AND the draft MISSED the dangerous gap: `workout_sessions.day_id`/`week_id` unindexed → editing a plan seq-scanned the whole session history. Applied a reconciled set instead (now the source of truth in `docs/database/perf_indexes.sql`, rewritten): idx_ws_client_status_started/_completed, idx_ws_day, idx_ws_week, idx_pde_exercise, idx_profiles_assigned_plan, idx_measurements_user_measured, idx_notifications_user_created + 5 low-traffic FK-hygiene + dropped 3 now-redundant plain indexes. Lesson: ALWAYS diagnose live pg_indexes before applying an index migration — CREATE INDEX IF NOT EXISTS only checks the NAME, so a differently-named draft silently duplicates existing coverage.
+  - Item 1 (NANO sizing) — still the only open thread: revisit Micro/Small ONLY if credit-throttling recurs now that indexes are in. Watch after a few days of real load.
+STATUS: DB-health backlog is effectively CLOSED except the conditional NANO-sizing watch.
+STANDING: never commit `docs/database/spartan_recomp_foundation_v1_seed.sql`.
