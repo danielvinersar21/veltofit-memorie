@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: dbc30056-f825-4104-b501-ac93e3096fc5
-  modified: 2026-08-29T06:55:56.470Z
+  modified: 2026-09-23T19:33:28.931Z
 ---
 
 `npm run lint && type-check && test && build` passes with **unused imports and
@@ -36,3 +36,27 @@ and read only the lines for the files you touched.
 Owner deferred the cleanup 2026-08-29 — it was surfaced mid-migration and mixing
 it into that deploy would have been wrong. The durable fix, when it is done, is
 to clear the 51 and THEN turn the flag on, so it cannot regrow.
+
+## A second blind spot, in the TESTS: a `vi.fn()` swallows unhandled rejections
+
+Found 2026-09-23 while testing the `last_seen_at` heartbeat, which is deliberately
+fire-and-forget (`void touchLastSeen(...).catch(() => {})`). A test written to prove
+the `.catch` net is needed — by deleting it and expecting Vitest to report an
+unhandled rejection — **passed with the net removed**. It caught nothing.
+
+Why: `vi.fn()` attaches its own handler to the promise it returns (that is how it
+records the outcome), which marks any rejection as "handled". Vitest then never sees
+an unhandled rejection and never fails the run.
+
+**How to apply:** a test that asserts "the suite would fail on an unhandled
+rejection" proves nothing when the rejecting call is a `vi.fn()`. Re-wrap the
+promise inside the mock and register `process.on('unhandledRejection')` by hand in
+the test. This matters for any deliberately-discarded promise — and this repo has
+several, since fire-and-forget is the house pattern for telemetry-ish writes
+(the heartbeat, the owner alerts, the MailerLite onboarding).
+
+**The general lesson, worth more than the mechanism:** the way to know a test bites
+is to break the source and watch it fail. The `last_seen_at` round did that for four
+separate mutations (including `=== undefined` → `!lastSeenAt` and adding an `await`),
+restored the sources byte-identically, and only then trusted the suite. Without it,
+one of the four tests was quietly worthless.

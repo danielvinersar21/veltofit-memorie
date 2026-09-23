@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 942ae820-f0a5-4369-aaa1-70945c3bdfd1
-  modified: 2026-09-23T14:40:42.959Z
+  modified: 2026-09-23T18:35:27.687Z
 ---
 
 Built on branch `test/e2e-suite`, **still uncommitted**. Includes app fixes in `src/` that belong in main regardless of the suite.
@@ -69,13 +69,28 @@ is DB response time, not the code under test.
 - Signup untestable until it's known whether email confirmation is on. Owner also reports the role selector sometimes appearing when it shouldn't — `auth-form/index.tsx:92-95` documents a matching race.
 - Chromium only, though the app is a PWA used mostly in mobile Safari.
 
-## CI — written, cannot run (TODO)
+## CI — ✅ RUNNING since 2026-09-23 (was blocked for six weeks)
 `.github/workflows/quality.yml` (`1b7473b`) runs lint + type-check + unit tests + build on PRs and pushes to main. **It has never executed.** Every run shows "Startup failure": GitHub refuses to allocate a runner because *"Your account's billing is currently locked"*.
 
 The billing state is contradictory and looks like a stuck flag: the account is on **GitHub Free**, all usage is **$0**, both subscriptions are Free — and `Settings → Billing → Payment information` says both *"Invalid payment method - authorization hold failed"* AND *"You have not added a payment method"*. So the flag is for a card that is not attached.
 
 **Re-checked 2026-09-23 — unchanged after six weeks, 90 runs, all "Startup failure"**,
 including the push that shipped `/deschide`.
+
+✅ **RESOLVED 2026-09-23, same evening. The gate runs.** ING unblocked the card on a
+phone call, the account came unstuck, and "Quality #2" passed green in 4m38 — the
+first successful run in the repo's history. It runs on every push to `main` and
+every PR, so it covers Robert too and cannot be skipped the way the local hook can.
+**It paid for itself on the first run that started**: lint, types and all 1878 tests
+passed on a clean machine, then the build died on `Missing env.SUPABASE_SERVICE_ROLE_KEY`
+— a module-scope throw in `supabase-admin.ts` that made `next build` impossible on any
+machine without that key, invisible both locally (`.env.local`) and on Vercel (project
+env). Fixed in `172ee88` by moving the check into `createAdminClient()`; the
+service-role key is deliberately NOT a CI secret (it bypasses RLS everywhere and any
+collaborator can use a repo secret). The two `NEXT_PUBLIC_*` secrets were already set.
+The card kept its number, so nothing had to be re-added anywhere.
+
+<details><summary>How it was diagnosed</summary>
 
 🔴 **CAUSE FOUND 2026-09-23, and it is the bank, not GitHub.** The owner retried that
 day and got an SMS from ING: *"cardul 1796 a fost blocat in urma unor tranzactii
@@ -103,3 +118,5 @@ account is Free and nothing is invoiced.
 `.githooks/pre-push` runs `npm run verify` (lint + type-check + 106 unit tests) in ~9s and blocks the push on failure. Wired via `core.hooksPath`, so hooks are versioned rather than hidden in `.git/`; install once per clone with `npm run hooks:install`. `next build` is excluded on purpose — Vercel builds every push and refuses to deploy a broken one.
 
 This is genuinely sufficient here, not a compromise: the owner is the only one who pushes, and his brother's work reaches main through the same machine (Vercel Free means the deploy must come from the owner's account). Escape hatch: `--no-verify` or `SKIP_VERIFY=1`.
+
+</details>
