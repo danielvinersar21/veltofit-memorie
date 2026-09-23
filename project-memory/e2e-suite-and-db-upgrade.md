@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 942ae820-f0a5-4369-aaa1-70945c3bdfd1
-  modified: 2026-08-15T18:06:53.241Z
+  modified: 2026-09-23T14:40:42.959Z
 ---
 
 Built on branch `test/e2e-suite`, **still uncommitted**. Includes app fixes in `src/` that belong in main regardless of the suite.
@@ -73,6 +73,27 @@ is DB response time, not the code under test.
 `.github/workflows/quality.yml` (`1b7473b`) runs lint + type-check + unit tests + build on PRs and pushes to main. **It has never executed.** Every run shows "Startup failure": GitHub refuses to allocate a runner because *"Your account's billing is currently locked"*.
 
 The billing state is contradictory and looks like a stuck flag: the account is on **GitHub Free**, all usage is **$0**, both subscriptions are Free — and `Settings → Billing → Payment information` says both *"Invalid payment method - authorization hold failed"* AND *"You have not added a payment method"*. So the flag is for a card that is not attached.
+
+**Re-checked 2026-09-23 — unchanged after six weeks, 90 runs, all "Startup failure"**,
+including the push that shipped `/deschide`.
+
+🔴 **CAUSE FOUND 2026-09-23, and it is the bank, not GitHub.** The owner retried that
+day and got an SMS from ING: *"cardul 1796 a fost blocat in urma unor tranzactii
+suspecte, efectuate la GITHUB\* CARD VERIFY"*. ING's fraud filter refuses the
+authorization hold and blocks the whole card with it. So the six-week-old "contact
+your bank" message was literal advice, not boilerplate. Fix: unblock at ING (on the
+number printed on the card, never the one in the SMS), ask them to allow
+international online payments, retry. A Revolut card usually passes where a Romanian
+personal card does not.
+
+⚠️ **A WRONG GUESS OF MINE, recorded so nobody repeats it:** I saw the account's
+billing address is the old *Str. Gheorghe Șincai, Alba Iulia* — not the PFA's
+Bucharest address from the legal pages — and concluded an address/card mismatch was
+declining the hold, advising "fix the address first". **The owner corrected me: it is
+his PERSONAL card, used everywhere, so that address already matches what the bank
+holds. Do not change it.** The address on those fields serves the bank check, not the
+PFA identity. The PFA name belongs in "Additional information", and is moot while the
+account is Free and nothing is invoiced.
 
 **Owner's plan (2026-08-13): retry tomorrow; if still blocked, attach a card** — the first successful authorization clears the flag, and with $0 owed on Free nothing gets charged. Alternative is GitHub Support (slower). The workflow needs no changes; once Actions runs, open either failed run → **Re-run jobs**, then add repo secrets `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` (build-time — `supabase.ts` throws at module scope without them; neither is sensitive, both already ship in the client bundle).
 
