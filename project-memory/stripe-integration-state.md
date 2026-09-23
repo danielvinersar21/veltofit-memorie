@@ -5,8 +5,48 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 671c6857-3813-43fe-928d-27deea8601cd
-  modified: 2026-09-01T11:35:30.741Z
+  modified: 2026-09-22T14:17:23.599Z
 ---
+
+## ✅ Audit live, 2026-09-22 (Stripe CLI `--live`, read-only + Dashboard read via Chrome)
+
+OK: account charges/payouts enabled, no requirements due; descriptor VELTOFIT; support@
+veltofit.app; tax id set. 7 active products, 14 prices = exactly the app's ladder (Plus 99/990,
+Max 195/299/399/499/699/899, annual = 10×), all `velto_*` lookup keys, tax_behavior inclusive.
+Live webhook enabled → app.veltofit.app/api/billing/webhook, 4 events, zero undelivered.
+Receipts + refund emails OFF, portal invoice history OFF (both deliberate: SOLO issues invoices).
+Invoice prefix STRP, footer „TVA 0% – neînregistrat… art. 310". Failed payments: retries, then
+cancel the subscription (= Free cap, matches the 1 Sep policy). **Only one live subscription ever:
+the owner's test account, Plus, created 8 Sep, CANCELED 9 Sep in trial — no real money, nothing to
+cancel.** No live events since 14 Sep.
+
+🔴 **Capcană, căzut în ea DE DOUĂ ORI (6 sep și 22 sep): prin API, portalul live arată
+`subscription_update.products` = null/0. E FALS.** Dashboard-ul (Settings → Billing →
+Customer portal) arată „Customers can switch plans" PORNIT, cu toate cele 7 produse, lunar
+și anual, plus linkurile de termeni și confidențialitate. Owner-ul confirmă că schimbarea
+pachetului merge. Pe 22 sep am raportat asta ca „gol" din citirea API și a trebuit retras.
+**Portalul se verifică DOAR în dashboard, niciodată din API.** Fusese deja tranșat pe
+8 sep, pe abonamentul live, în `docs/plans/backlog.md` („Portalul funcționează complet"):
+citește acolo înainte să re-raportezi ceva despre portal.
+
+(B) ✅ **Emailurile Stripe către clienți, PORNITE pe 22 sep** (aprobat de owner, salvate și
+verificate după reîncărcare): reminder cu 7 zile înainte de finalul trialului; email la plată
+cu cardul eșuată; link găzduit de Stripe pentru confirmarea plății (3D Secure), cu remindere
+la 3/5/7 zile. Rămân oprite: reînnoire, card care expiră, debit bancar, facturi trimise manual.
+„Payment method updates" → ✅ **„Link to a Stripe-hosted page"** (22 sep, aprobat de owner).
+Înainte era „Use a mix of both (Legacy)" cu toate linkurile spre landing. ⚠️ Stripe a avertizat
+că trecerea e ireversibilă: varianta Legacy nu mai apare deloc în listă. Rămâne „own custom link".
+
+(C) ✅ **Curățenia din Stripe, făcută 22 sep** (aprobată de owner): prețul vechi de 3500 EUR
+(`price_1NcqjI…`, produsul arhivat „Monthly", 2023, zero abonamente) → arhivat; live are acum
+exact 14 prețuri active. Cele 3 abonamente din test mode → anulate (2 ale contului de test
+`8fd89cd9…`, Plus 15 și Max 30; 1 fixture de 15 USD de la `stripe trigger`). Zero active în test.
+Webhook-ul de TEST (`we_1UCeqx…`) e **dezactivat**, deci anulările n-au atins baza.
+⏳ Rândul din DB al contului de test ține încă abonamentul de test ca activ: SQL-ul de resetare
+(ca `applyCancellation` + golește `stripe_customer_id`, care e un client din test mode) i-a fost
+dat owner-ului pe 22 sep, cu gardă pe cele două id-uri. ✅ **Rulat de owner pe 22 sep**
+(a raportat „am rulat”, fără STOP; rezultatul final nu mi l-a arătat). Dacă mai apare contul
+de test cu abonament activ în admin, de aici pornești.
 
 ## 🔴 CITEȘTE ASTA ÎNTÂI — corectură din 2026-09-08
 
@@ -221,10 +261,9 @@ trebuie refăcut.**
 | **Dispute** | rambursare **imediată**, ales de owner |
 | **Cheile** | `STRIPE_SECRET_KEY` (live) + `STRIPE_WEBHOOK_SECRET` (live) puse în Vercel **direct de owner**, fără să treacă prin conversație |
 
-⚠️ **Un singur punct ambiguu, deliberat lăsat așa:** lista de produse a portalului
-citește `products: 0` prin API, dar dashboard-ul le arată pe toate 7 cu Save gri.
-Cele două nu sunt de acord și n-am putut tranșa. **Se vede la primul abonament
-real** — dacă butonul de schimbare a planului lipsește din portal, aici e cauza.
+✅ **Tranșat 22 sep:** lista de produse a portalului citește `products: 0` prin API, dar
+dashboard-ul le arată pe toate 7, iar owner-ul confirmă că schimbarea pachetului merge.
+Crede dashboard-ul, nu API-ul (vezi capcana de sus).
 
 📌 Numele: pachetele s-au redenumit `Velto *` → `Veltofit *` în aceeași zi, în
 Stripe și în cod. Ce NU se redenumește niciodată e în [[rename-veltofit]] —

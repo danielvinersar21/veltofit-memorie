@@ -19,5 +19,9 @@ deploy, or the environment it needs does not exist yet), not something forgotten
 - Before recommending a push, check what shipping it would expose: a page linked in
   the UI whose backend env vars only exist locally will ship visibly broken. That
   consequence is the thing worth telling him, not the fact of the divergence.
+- **A push can carry side effects beyond deployment.** Since 2026-09-22 this repo's
+  pre-push hook also runs the off-site memory backup, so a long unpushed streak means
+  the notes are unbacked too — even when every unpushed commit is documentation and
+  the production risk is zero. Look for hooks before calling an unpushed streak harmless.
 
 Related: [[verify-project-status-from-git-refs]], [[feedback-plain-language-reports]].
