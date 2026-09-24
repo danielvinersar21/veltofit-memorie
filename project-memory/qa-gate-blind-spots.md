@@ -60,3 +60,25 @@ is to break the source and watch it fail. The `last_seen_at` round did that for 
 separate mutations (including `=== undefined` → `!lastSeenAt` and adding an `await`),
 restored the sources byte-identically, and only then trusted the suite. Without it,
 one of the four tests was quietly worthless.
+
+## A refinement, 2026-09-24: the mutation test itself can pass by accident
+
+Mutation-testing the admin trainer-table mappers, 13 of 14 mutations failed their
+test as intended. **One passed.** The mutation moved the presence sentinel in
+`toOptionalCount` so both counters were decided by `'plan_count' in row` — but the
+test put only `plan_count` on the wire, so `row['workout_count']` was `undefined`
+either way and the mutated code produced the right answer *by coincidence*.
+
+Hardened by testing **both directions** — a row carrying only `plan_count`, and a
+row carrying only `workout_count`. The second one is what shows that "Antrenamente"
+would have been declared unavailable although the number had arrived. After that,
+the mutation fails.
+
+**How to apply:** breaking the source is necessary but not sufficient. When a
+mutation *doesn't* fail, that is information — it usually means the test exercises
+one side of a symmetric pair and the fixture leaves the other side at the value the
+bug would produce. Vary the fixture, don't just trust the green.
+
+One more practical note from that round: restore mutated sources from a snapshot
+copy (`cp`), **never `git checkout`** — in this repo the file being mutated usually
+has uncommitted work from the same session, and a checkout silently discards it.

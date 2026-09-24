@@ -23,7 +23,64 @@ complet e în `~/Veltofit/Social/ads/2026-09-21-prezentare/pachet.md`.
 - Titlul „30 de zile gratuite sau rămâi pe Free”. Varianta „cu până la 2 clienți” i s-a părut owner-ului „mică, respingătoare”.
 - Linkul cu `utm_source=meta&utm_medium=paid&utm_campaign=prezentare-sep`. Meta a mutat etichetele în Tracking → URL parameters.
 
-**De verificat pe 24–25 sep:** conturi noi de antrenor cu `utm_source: meta` în admin, la cardul „Proveniență”, plus costul pe vizită. Dacă Meta abia cheltuiește, lărgim întâi cu Facebook Reels și Stories, apoi publicul. De făcut săptămâna asta: verificarea identității la „Ad transparency”, ca reclamele să nu fie oprite când devine obligatorie.
+**✅ VERIFICAT pe 24 sep, dimineața, cu owner-ul, din capturi.** Reclama se termină
+pe **29 sep** (nu 28, cum scria aici). Rezultatele, 22–24 sep:
+
+| | Reclama (prezentare-sep) | Boost (cine-sunt) |
+|---|---|---|
+| Cheltuit | 77,21 lei | 87,89 lei din 150 |
+| Vizite pe site | 38 | 195 |
+| **Cost pe vizită** | **2,03 lei** | **0,45 lei** |
+| Reach / afișări | 3.621 / 4.635 | 6.370 / 8.523 |
+| Altceva | — | 100 vizite profil, 18 atingeri bio, 2 urmăritori, 5 distribuiri |
+
+Ambele numără la fel: Instagram a schimbat „website visits" să însemne click care a
+dus la încărcarea efectivă a paginii, adică exact „landing page views" din Ads Manager.
+Meta LIVREAZĂ bugetul (96%), deci ipoteza „publicul e prea strict, lărgim" **NU se aplică** —
+nu o re-propune. Frecvența 1,28, deci materialul nu e obosit.
+
+**Cele 4 înscrieri din 22–24 sep, pe surse (din cardul Proveniență, pagina fiecăruia):**
+- **Reclama** (`meta/paid/prezentare-sep`): 1 — Andrei Diaconu, Constanța. Inert.
+- **Boost** (`instagram/boost/cine-sunt`): 1 — Dumitru Amariei, București. S-a întors a doua zi.
+- **Linkul din bio** (`ig/social`, fără campanie): 2 — Maxim (Pitești, inert) și
+  Ghimpeteanu Dragos (București), **singurul cu un client adăugat**.
+
+**Capcana de atribuire, REZOLVATĂ — owner-ul a avut dreptate, eu hedge-uisem degeaba:**
+boost-ul produce vizite pe PROFIL (100) și atingeri pe linkul din bio (18). Omul care vine
+prin profil → bio ajunge etichetat `ig/social`, identic cu organicul, deci **boost-ul își
+cedează singur meritul**.
+
+Că cei 2 `ig/social` vin tot din boost **se dovedește**, nu se presupune: graficul Vercel
+arată 16–20 sep cu **3–4 vizitatori pe zi**, deși linkul din bio exista, caruselul era
+publicat din 15 sep și cele 3 reels-uri erau sus. Saltul începe fix în ziua boost-ului.
+**16–20 sep e grupul de control.**
+
+Deci atribuirea corectă: **reclama 1 înscriere la 77 lei, boost-ul 3 înscrieri la 29 lei.**
+Boost-ul câștigă și la vizite (4,5×) și la înscrieri (2,6×). Total: **165 lei / 4 antrenori
+= 41 lei bucata.**
+
+**Concluzia strategică, mai importantă decât clasamentul:** conținutul organic nu are
+distribuție deloc — 3 reels + 1 carusel publicate au produs 3 vizitatori pe zi. Nu sunt
+slabe (cine le vede se înscrie), dar fără urmăritori Instagram nu le arată nimănui.
+**Plata nu e un test de trecut/picat, e deocamdată SINGURUL canal de distribuție.**
+Întrebarea nu e „merită", ci „cât pe lună, constant". La 41 lei/antrenor, 300 lei/lună ≈ 7
+antrenori. De-asta cei 2 urmăritori noi contează mai mult decât par: sunt singurul lucru
+care, adunat, scade dependența de plată.
+
+**Recomandarea dată owner-ului pe 24 sep:** oprește reclama, mută banii pe boost. Nu pe
+baza înscrierilor (1 vs 1 nu decide nimic), ci pe 38 vs 195 de vizite la aceiași bani —
+și pentru că boost-ul lasă ceva în urmă (urmăritori, profil, bio care aduce și după ce se
+termină), iar reclama nu lasă nimic. Rezerva: cele două diferă prin material, loc ȘI
+public simultan; pariul e pe material (caruselul „Cine sunt" bate demonstrația de produs),
+dar nu se poate dovedi din datele astea.
+
+Toți 4 sunt pe **Free**, niciunul n-a ajuns la Stripe. Cei doi care s-au întors s-au
+înscris DUPĂ ce au pornit emailurile MailerLite (23 sep seara); cei doi inerți, înainte.
+La 4 oameni e coincidență la fel de probabilă ca o cauză — **de reverificat peste o
+săptămână, cu mai mulți**. Vezi [[onboarding-emails-mailerlite]].
+
+**Încă de făcut:** verificarea identității la „Ad transparency", ca reclamele să nu fie
+oprite când devine obligatorie.
 
 Owner-ul a acceptat conștient ca sigla din colț să se suprapună cu numele contului în varianta de reclamă. Vezi [[instagram-reels-animate]].
 

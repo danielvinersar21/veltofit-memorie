@@ -1,6 +1,6 @@
 ---
 name: backlog-active-workout-trio
-description: "Branch fix/active-workout-trio — 3 active-workout fixes committed (dad3d35) after review found 2 blockers. NOT merged, NOT pushed, NOT device-tested. One pre-existing bug left open."
+description: "fix/active-workout-trio (dad3d35) — 3 active-workout fixes, VERIFIED IN MAIN AND ON GITHUB 2026-09-24. The old 'NOT merged, NOT pushed' line was stale and caused a false alarm. One pre-existing bug still open: weight-only sets are discarded."
 metadata: 
   node_type: memory
   type: project
@@ -8,7 +8,11 @@ metadata:
   modified: 2026-08-07T11:18:01.534Z
 ---
 
-**Committed 2026-08-07 as `dad3d35` on `fix/active-workout-trio` (branched off main @ `844ce07`). NOT merged, NOT pushed, NOT device-tested.**
+**Committed 2026-08-07 as `dad3d35` on `fix/active-workout-trio`. ✅ MERGED INTO MAIN AND PUSHED — verified 2026-09-24 with `git merge-base --is-ancestor dad3d35 main` (and against `origin/main`). In production since.**
+
+> ⚠️ This note previously read "NOT merged, NOT pushed" and was never corrected. On 2026-09-24 a status report repeated it and told the owner he had seven weeks of work sitting on one disk. He did not. **The only branch not in main is `feat/exercise-media`.** Before ever claiming a branch is unmerged, run `git merge-base --is-ancestor <sha> main` or `git branch --no-merged main` — do not trust this file's status lines without it.
+
+The three fixes are live; the branch ref just still exists locally. Device-testing was never done.
 
 Three fixes to the client active-workout screen (`page.tsx` + `use-active-session.ts`):
 1. Weight field for loaded non-reps sets (carries, loaded holds, timed machine sets).
@@ -24,8 +28,8 @@ The first attempt derived it from the `exercise_equipment` join (`free_weights`/
 
 **Gate green** (lint, type-check, 93 tests, build) both before and after the fixes.
 
-**STILL OPEN — pre-existing, deliberately not fixed here, now more likely to bite:**
-Weight-only sets are silently discarded at completion. `persistAllEnteredSets` filters on `actualValue.trim()` and `persistSet` early-returns when reps are empty (the service requires a non-empty `actual_value`). A client who types 24 kg on a carry but forgets the metres gets the "Seturi incomplete" warning, and if they continue, `clearWorkoutState()` wipes the sessionStorage copy too — the 24 kg exists nowhere. Fix needs a product call: either persist weight with a placeholder value, or block completion on weight-only sets.
+**STILL OPEN — re-verified against `main` on 2026-09-24, the code is unchanged:**
+Weight-only sets are silently discarded at completion. `persistAllEnteredSets` (`use-active-session.ts:649`) filters on `p.actualValue.trim()`; `persistSetNow` (`:522`) early-returns `true` when reps are empty. The service requires a non-empty `actual_value`. A client who types 24 kg on a carry but forgets the metres gets the "Seturi incomplete" warning, and if they continue, `clearWorkoutState()` wipes the sessionStorage copy too — the 24 kg exists nowhere. Fix needs a product call: either persist weight with a placeholder value, or block completion on weight-only sets.
 
 Also noted, not acted on: trainer plan-report pages print `actual_value` only, never `actual_weight` (the session-detail drawer does show it) — so the trainer can't see the weight data this fix produces more of.
 
