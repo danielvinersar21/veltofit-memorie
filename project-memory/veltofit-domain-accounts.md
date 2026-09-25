@@ -94,3 +94,10 @@ Domains → veltofit.app → DNS. Mai multe TXT de verificare pot coexista legal
 
 Legat: [[landing-seo-baseline]] (Search Console, jetonul neexplicat),
 [[add-client-production-config]] (SMTP-ul Resend, configurat 2026-07-22).
+
+## De unde e cumpărat domeniul (lămurit 2026-09-25)
+
+Din **Vercel**, echipa „Daniel's projects" (Hobby), NU din contul personal —
+de-asta `vercel.com/account/domains` apare gol. Lista reală:
+`vercel.com/daniels-projects-6e492e56/~/domains`. Registrar Name.com (prin el
+vinde Vercel). Factura: **9,99 USD, 11 dec 2025**. **Auto-renew pe 11 dec 2026.**

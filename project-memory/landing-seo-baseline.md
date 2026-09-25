@@ -91,3 +91,10 @@ change) — offered to the owner.
   shows).
 
 See [[landing-light-redesign]] for the redesign itself.
+
+**Search Console data, 2026-09-25 (3 months, Web):** 7 clicks, 33 impressions,
+avg position 3.7. Visible queries are ONLY branded: "veltofit" 3/10, "velto"
+0/8; the other 4 clicks / 15 impressions are queries Google hides as too rare.
+Baseline confirmed: still zero category traffic. A Google "10 clicks in 28 days"
+milestone email arrived 23 sep. It doesn't match this view (7 in 3 months), so
+it most likely counts other search types or another property. Don't read it as growth.

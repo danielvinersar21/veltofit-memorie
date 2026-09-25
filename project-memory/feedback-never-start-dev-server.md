@@ -39,3 +39,23 @@ unknown, so there is no "safe way" to leave one running.
 ⚠️ He asked once, explicitly, and it had already been started twice. Do not
 treat a later "yes" to some other question as permission to start one again —
 this instruction outlives the task that prompted it.
+
+## Regula se poate încălca INDIRECT, printr-o greșeală de citare — 2026-09-25
+
+N-am decis să pornesc serverul. L-am pornit scriind un fișier.
+
+`cat > .env.development.local <<EOF` — delimitator **NEGHILIMETAT** — iar în
+comentariile pe care le scriam apărea `` `npm run dev` `` ca text explicativ.
+Shell-ul a executat ghilimelele inverse din heredoc, a pornit un al doilea
+server pe 3001, iar ieșirea lui a ajuns scrisă **în mijlocul fișierului**. A
+picat doar fiindcă serverul owner-ului ținea deja lock-ul din `.next/dev/`.
+
+**Cum se evită:** `<<'EOF'` cu delimitatorul în ghilimele simple oprește ORICE
+substituție — backtick, `$VAR`, `$(...)`. Folosește varianta neghilimetată
+**numai** când chiar vrei substituție, și atunci nu scrie în ea text care conține
+backtick-uri sau `$`. Dacă ai nevoie și de conținut literal, și de valori: scrie
+antetul cu `<<'EOF'`, apoi adaugă valorile separat cu `printf >>`.
+
+**Lecția mai largă:** regulile de genul „nu porni X" nu se încalcă doar decizând
+să pornești X. Se încalcă și printr-o comandă care îl pornește ca efect
+secundar. Când scrii conținut care VORBEȘTE despre comenzi, citează-l.

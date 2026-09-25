@@ -1,12 +1,13 @@
 ---
 name: backlog-seo-content-pages
-description: Backlog — three content pages to rank for category searches, not just the brand name. Owner parked it 2026-08-28 ("posibil sa ajungem la el").
+description: Backlog — three content pages to rank for category searches, not just the brand name. Un-parked 2026-09-25, owner wants them built.
 metadata:
   type: project
 ---
 
-**Parked 2026-08-28, owner's words: "posibil să ajungem la el la un moment dat."**
-Do not start it unprompted.
+**UN-PARKED 2026-09-25** — owner decided to build them, in a separate thread, after
+Search Console showed 3 months of branded-only traffic (see [[landing-seo-baseline]]).
+(Was parked 2026-08-28: "posibil să ajungem la el la un moment dat.")
 
 **Why it exists:** measured that day — veltofit.app appears on Google only for its
 own name, on none of the category queries a trainer would type. On-page SEO for
@@ -31,5 +32,4 @@ in Romanian software directories (softlead.ro ranks on page one for these
 queries). Gets a link, referral traffic, and presence on a page that already
 ranks. An hour of work.
 
-**Prerequisite for measuring any of it:** Search Console, which the owner
-confirmed is not set up. Steps are in [[landing-seo-baseline]].
+**Measuring it:** Search Console IS set up (data read 2026-09-25). Steps are in [[landing-seo-baseline]].
