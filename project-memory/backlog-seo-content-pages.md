@@ -33,3 +33,14 @@ queries). Gets a link, referral traffic, and presence on a page that already
 ranks. An hour of work.
 
 **Measuring it:** Search Console IS set up (data read 2026-09-25). Steps are in [[landing-seo-baseline]].
+
+**2026-09-25 — page 1 BUILT, UNCOMMITTED.** `/aplicatie-antrenori-personali`: server
+component, article layout, 4 screenshots in `public/images/aplicatie-antrenori/`,
+own share card via shared `src/app/og-card.tsx`, sitemap entry, landing footer link.
+Text in `docs/plans/seo-aplicatie-antrenori-personali-text.md` (content-reviewed).
+`SourceCarryingLink` / `carrySignupSource` carry signup attribution from content
+pages to the landing — reuse for pages 2 and 3. Traps: openGraph must NOT declare
+`images` on a page inside `(marketing)` (route-group hash suffix; Next auto-attaches
+the colocated card only when `images` is absent). Don't `npm run build` while the
+owner's dev server runs (shared `.next`). Next after publish: request indexing in
+Search Console, then the softlead.ro directory listing.

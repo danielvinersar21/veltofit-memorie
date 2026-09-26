@@ -21,3 +21,11 @@ Don't name the foreign app or the trainers. Also decided same day for
 [[backlog-seo-content-pages]]: no "ce nu face Veltofit" section, because most of
 those items are on the roadmap and the section would go stale. Content pages are
 built as plain server components (owner OK'd the pattern for them).
+
+**2026-09-25, same session:** the English label „Reps” on the client's active-workout
+screen (`active-set-row/index.tsx:41`) was flagged next to the „construit în limba
+română” sentence. Owner: **leave it as is.** Don't re-propose. Also that day the
+share-card bottom line became „30 de zile gratuite, anulezi oricând. Sau rămâi pe
+Free.” (owner-approved, all cards, `src/app/og-card.tsx`).
+Also 2026-09-25: the landing screenshot `public/images/lp-dashboard-plan-create-light.png`
+still shows the old „Velto” logo. Owner: **leave it.** Don't re-propose.
