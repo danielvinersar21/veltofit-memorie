@@ -1,8 +1,11 @@
 ---
 name: db-two-databases-migration-order
 description: "Din 25 sep 2026 sunt DOUĂ baze (producție + locală în Docker) și nimic nu le sincronizează. Ordinea migrărilor: local întâi, apoi prod, apoi `npm run db:schema`. Owner-ul a cerut să nu-l întrebi dacă a rulat pașii — rulează-i tu."
-metadata:
+metadata: 
+  node_type: memory
   type: project
+  originSessionId: 7ecbafbe-e9f2-4d56-b149-7f522d189412
+  modified: 2026-09-26T07:32:14.674Z
 ---
 
 **Pe 2026-09-25 a apărut o a doua bază de date.** Producția (`veltofit-db`,
@@ -50,10 +53,12 @@ grosolane; nepotrivirile cu baza reală le prinde doar pre-flight-ul.
   atinge dintr-un container Docker obișnuit. `supabase db dump` își aranjează
   singur containerul și merge. Pentru `psql` de mână:
   `aws-1-eu-central-2.pooler.supabase.com:5432`, user `postgres.<ref>`.
-- **`SUPABASE_ACCESS_TOKEN` din `.env.local` EXPIRĂ.** Eșuează cu „Unauthorized"
-  și simptomul nu spune de ce — a pierdut o jumătate de oră pe 25 sep. Unul nou
-  la supabase.com/dashboard/account/tokens. **Nu unul fără expirare:** tokenul
-  poate crea și ȘTERGE proiecte și citi cheile de API.
+- **`SUPABASE_ACCESS_TOKEN` din `.env.local` EXPIRĂ — cel actual pe 2 octombrie
+  2026** (citit în inventarul din 26 sep). Eșuează cu „Unauthorized" și simptomul
+  nu spune de ce — a pierdut o jumătate de oră pe 25 sep. Unul nou la
+  supabase.com/dashboard/account/tokens. **Nu unul fără expirare:** tokenul poate
+  crea și ȘTERGE proiecte și citi cheile de API. Când `npm run db:schema` cade cu
+  „Unauthorized", ăsta e primul lucru de verificat, nu baza.
 - **Parola bazei ≠ parola contului Supabase.** Resetarea ei nu atinge nimic din
   aplicație (aia folosește cheile de API), doar conexiunile directe.
 - **Dumpul E stabil** — două rulări consecutive dau fișiere identice. Deci o

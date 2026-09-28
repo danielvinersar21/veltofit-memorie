@@ -34,3 +34,22 @@ Trainerize engagement). Noi: nimic propriu azi. Candidat: relația antrenor–cl
 Nu se copiază: „#1", cifre de scară, poze stock, „tot ce ai nevoie", frica de concurență, ghid „cât să ceri"
 (n-avem autoritate să-l învățăm business). Orice promisiune de fondator se verifică întâi în termeni
 ([[feedback-check-legal-text-before-offering-options]]).
+
+## Wireframe-ul final al owner-ului (2026-09-26) — DECIS, „merg pe asta"
+Fișier: `~/.codex/.chatgpt-projects/g-p-69401a411a308191970b7212eec5f88a/veltofit-wireframe-final.html`
+(textul e în srcdoc, escapat HTML). 8 secțiuni: hero „Mai puțină muncă de birou în jurul fiecărui
+client." → 02 Împreună în sală → 03 Organizarea muncii (fișa / bibliotecă / progres) → 04 Primii pași →
+05 fondatorul (H2 = rândul lui din carusel; „La ei am văzut…" = afirmația LUI, confirmată de el) →
+06 Prețuri (neschimbate) → 07 FAQ → 08 Final. A preluat parțial v2-ul meu (Desktop/veltofit-wireframe-v2.html);
+a păstrat H1-ul lui și H2-ul 02 — decizia lui, nu le re-propune.
+Nu e implementat. Implementarea = rescriere landing (frontend-dev → design-reviewer → code-reviewer),
++ capturi reale A–F, + pagina Despre (linkată, neconstruită), + metadata/OG care încă zic „într-un singur loc".
+
+## Implementat 2026-09-26 (NECOMIS)
+Landing rescris după wireframe-ul final: page.tsx (~2200→~830), styles, page.test.ts + page.pricing.test.ts
+(mock cu valori ciudate), layout.tsx meta (FREE_SEATS), src/app/opengraph-image.tsx (titlul nou), link
+mort /#ce-urmeaza scos de pe pagina SEO. Imagini noi în public/images (4 capturi + daniel-portret-parc.png)
+— trebuie comise ÎMPREUNĂ cu pagina. Gate verde (2371 teste, build). Sliderul Max păstrat (cererea owner-ului).
+Rămase: pagina /despre (text în docs/plans/pagina-despre-v1.md); captura D nu poate arăta graficul (e la
+nivelul butonului roșu) → captură nouă; root layout + pagina SEO încă zic „într-un singur loc".
+Capcană: testele aplică CSS-ul modulelor → linkurile din nav (display:none sub lg) cer `hidden: true` în getByRole.

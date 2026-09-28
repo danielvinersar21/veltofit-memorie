@@ -1,9 +1,11 @@
 ---
 name: landing-pricing-section-built
-description: "Landing waitlist→signup pass — COMMITTED 2026-08-20 as 1dd353c on main (not pushed). Pricing section live, Growth copy killed. OG image still stale + metadataBase unset."
-metadata:
+description: "Landing waitlist→signup pass — COMMITTED 2026-08-20 as 1dd353c on main. Pricing section live, Growth copy killed. Conventions: .linkButton + no 2-column pricing grid. metadataBase CLOSED 2026-09-27; OG asset still stale."
+metadata: 
   node_type: memory
   type: project
+  originSessionId: 0bd6cd36-e91d-4ae1-8d38-f295ff5a4ec2
+  modified: 2026-09-27T08:05:12.942Z
 ---
 
 Built and **COMMITTED 2026-08-20 as `1dd353c` on main** (NOT pushed yet) in
@@ -38,9 +40,11 @@ middle of an element screenshot — inject `nav { display: none }` before shooti
 **Still open:**
 - OG image is still `/images/hero-image.png`, a raw screenshot — needs a designed
   asset, not code.
-- **`metadataBase` is NOT set** in `src/app/layout.tsx` (build warns ×4). OG image
-  URLs are relative, so they resolve against `VERCEL_URL` (the per-deployment host)
-  instead of `veltofit.app`. One-line fix: `metadataBase: new URL('https://veltofit.app')`.
+- ~~`metadataBase` is NOT set~~ — **CLOSED, verified 2026-09-27.**
+  `src/app/layout.tsx:37` now has `metadataBase: new URL('https://veltofit.app')`,
+  and both the landing (`(marketing)/layout.tsx:49`) and the new SEO page
+  (`aplicatie-antrenori-personali/page.tsx:74`) declare a canonical. Do not
+  re-report this as open.
 - FAQ "Cum se face plata?" says "pe bază de factură" — written under the
   manual-invoicing assumption. Owner has since decided to build Stripe up front
   ([[pricing-monetization-plan]]), so this copy needs a card-payment rewrite when

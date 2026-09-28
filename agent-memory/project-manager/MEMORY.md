@@ -8,4 +8,5 @@
 - [Legal copy drifts with feature flags](legal-copy-drifts-with-feature-flags.md) — terms/privacy go false when a flag flips, a Stripe setting is test-mode-only, or a promised right has nothing to run.
 - [Vendor account ≠ deployment wired](vendor-account-configured-is-not-deployment-wired.md) — "live mode configured" covered the Stripe account, not the env keys; prod ran on test keys for 3 days.
 - [First-charge settings are irreversible](first-charge-settings-are-irreversible.md) — invoice numbering/template/descriptor freeze at the first real payment; dashboard-only, so no gate catches them.
+- [Find the writer, not the reader](verify-a-feature-by-finding-its-writer.md) — a rendered state nothing ever writes is the commonest false "complete"; grep the write, and name which direction works.
 - [The repo is blind to real-world events](repo-is-blind-to-real-world-events.md) — refs can't tell you someone signed up; derive unwritten dates, but check the rule first (I once invented a trial deadline).
