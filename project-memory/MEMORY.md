@@ -12,12 +12,14 @@
 - [Citește textul legal ÎNAINTE de a oferi opțiuni](feedback-check-legal-text-before-offering-options.md) — 24 sep: o opțiune pe care i-am dat-o contrazicea propria pagină de termeni. Paginile legale sunt promisiuni publicate.
 - [Citește regulile de social din fișier](feedback-social-rules-read-the-file.md) — 2026-09-06: skill încărcat ≠ reguli citite; review-ul rulează ÎNAINTE de a-i arăta.
 - [DM-uri fără diacritice](feedback-dm-without-diacritics.md) — 2026-09-22: DM-urile către antrenori fără diacritice; tot restul, cu.
+- [⚠ Sonda „anon cheamă funcție interzisă" dărâmă Postgres-ul](supautils-denied-function-segfault.md) — 29 sep: segfault pe imaginea Supabase, local și aproape sigur prod. Verifică permisiunile pe funcții din catalog, nu chemându-le. `trainer_signup_source_verify.sql` 4.4 e periculos.
 - [Două baze de date, și ordinea migrărilor](db-two-databases-migration-order.md) — din 25 sep există și o bază LOCALĂ. Local întâi, apoi prod, apoi `npm run db:schema`. „O să uit sigur" → rulează pașii tu. Plus capcanele (IPv6, tokenul expirat).
 - [Două gazde, un produs](two-hosts-are-one-product.md) — 2026-09-03: dashboard=desktop, app=mobile, UN produs. O funcție doar pe o gazdă e o LIPSĂ, nu o decizie. Sesiunea pe origine e singura excepție reală.
 - [Robert — al doilea contribuitor](robert-contributor-tasks.md) — fratele owner-ului, a construit dashboardul de admin; briefuri la nivel de obiective+constrângeri. Poza de profil LIVRATĂ (PR #16), exportul PDF al lui din 2026-08-20.
 
 - [Ținte de adopție pe trimestre](adoption-targets-2026-2027.md) — 26 sep: plătitori cumulați Q4 1→3, Q1 4→7, Q2 8→12, Q3 2027 12→18. Recalibrare ~31 oct, decizie 31 mar 2027. Sursa: `docs/plans/tinte-adoptie-v1.md`.
-- [Ce justifică banii — analiza din 26 sep](what-justifies-the-money-2026-09-26.md) — **START AICI pentru „ce mai construim".** Plus nu adaugă nicio funcție peste Free, doar locuri. Trei grămezi (raportul / sala / intrarea), ordinea propusă și linia de „gata" după punctul 5. Singura cerere reală: importul din Excel, de la Radu.
+- [Ce justifică banii — analiza din 26 sep](what-justifies-the-money-2026-09-26.md) — **START AICI pentru „ce mai construim".** Plus nu adaugă nicio funcție peste Free, doar locuri. Trei grămezi (raportul / sala / intrarea), ordinea propusă și linia de „gata" după punctul 5. ⚠️ **§4 e ÎNCHIS COMPLET din 29 sep** — toate șase reparațiile de încredere.
+- [Importul de clienți — etapa 0 livrată](import-clienti-etapa-0.md) — **START AICI pentru importul din Excel.** Owner-ul l-a ales în locul raportului pe 29 sep, și avea dreptate: **1 din 4 antrenori adaugă vreodată un client**, deci intrarea e strâmtoarea, nu produsul. Etapa 0 (Arhivat→Inactiv) e în producție pe toate trei straturile. Plus capcana `head -12` care era să lase afară calea mai frecventă.
 
 ## Stare produs — deschise
 - [Notificările n-au funcționat niciodată](notifications-never-worked.md) — zero notificări livrate vreodată unui client, confirmat în prod 2026-08-30. **Feature-ul a fost ȘTERS, nu reparat** (`d09fba5`, în main, verificat 2026-09-26) — `src/features/notifications/` nu mai există. Nu e un bug de reparat, e un canal de reconstruit; forma reparației (RPC SECURITY DEFINER, nu politică) e în notă. Patru defecte documentate, plus ce a rămas viu în două RPC-uri.
@@ -63,7 +65,7 @@
 
 ## Creștere, conturi, marketing
 - [Cine e fiecare cont de antrenor](trainer-accounts-who-is-who.md) — Bogdan și Radu sunt PRIETENI invitați personal (de-asta scutiți); organici doar Crăciun și Dumitru. Lămurit de 2 ori, pierdut de 2 ori — nu re-deriva din emailuri.
-- [Prima reclamă Meta](meta-ads-first-campaign.md) — 21 sep, rezultate la 3 zile (24 sep): boost-ul bate reclama de 4,5 ori la cost pe vizită (0,45 vs 2,03 lei); ~47 lei pe antrenor adus; capcana prin care boost-ul cedează meritul linkului din bio.
+- [Prima reclamă Meta](meta-ads-first-campaign.md) — final 29 sep: 519 lei, 4 antrenori, TOȚI în primele 3 zile; zero după 24 sep cu ~434 vizite plătite. Cost real ~130 lei/antrenor, nu 41. Boost-ul tot bate reclama de 3× la cost pe vizită.
 - [Proveniența antrenorilor](trainer-signup-source.md) — LIVE 21 sep (`5afff65`), verificat 17/17. Capcana locală cu Redirect URLs e în notă.
 - [Alertele pentru owner](owner-alerts.md) — LIVE 22 sep (`65f1433`): emailuri FĂRĂ nume/email/oraș (decizia lui), la contact@.
 - [Emailuri de onboarding în MailerLite](onboarding-emails-mailerlite.md) — ✅ LIVE 23 sep, dovedit cap-coadă. Capcana variabilei `MAILERLITE_API_KEY` deja existente din waitlist e în notă.

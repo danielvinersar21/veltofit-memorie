@@ -91,3 +91,29 @@ prezentarea mea”, adică, cel mai probabil, caruselul „Cine sunt”, până 
 reclama se suprapun pe 22–25 sep. **Cum le deosebești:** boost-ul vine fără
 etichete (referrer instagram.com), iar reclama vine cu `utm_source=meta`. După
 vineri rămâne doar reclama.
+
+**✅ VERIFICAT pe 29 sep, la final, din capturi.** Reclama s-a terminat pe 29 sep. Owner-ul
+N-A oprit-o pe 24, a mers până la capăt. Boost-ul „Cine sunt" a fost prelungit la 300 lei pe
+10 zile, cu publicul „Antrenori RO - test cine sunt", și se termină ~1 oct.
+
+| Total 22–29 sep | Reclama | Boost (până pe 29) |
+|---|---|---|
+| Cheltuit | 278,35 lei | 240,42 din 300 |
+| Vizite pe site | 175 (1,59 lei) | 492 (0,49 lei) |
+| Doar după 24 sep | 201 lei → 137 vizite (1,47) | 153 lei → 297 vizite (0,51) |
+| Reach / afișări | 10.783 / 16.927 | 15.363 / 24.520 |
+| Profil / bio / follow | — | 199 / 21 / 3 (după 24: +99 / **+3** / +1) |
+
+Vercel 16–29 sep: 1.079 vizitatori, bounce 93%, `/login` 36. Trafic ~110–155/zi cât au rulat plățile.
+**Zero antrenori noi de pe 24 încoace**, cu ~354 lei și ~434 vizite plătite. Toți 4 au venit
+în 22–24. La rata din primele zile (~1,7% din vizitele plătite) ne așteptam la ~7; zero e
+foarte puțin probabil să fie întâmplare → s-a schimbat ceva.
+Cost real pe antrenor: **519 lei / 4 = ~130 lei**, nu 41. Estimarea „300 lei/lună ≈ 7 antrenori" NU mai stă.
+Semnal: atingerile pe linkul din bio s-au oprit aproape de tot după 24 (18 → 21). Ipoteza de
+lucru: primii au fost rețeaua caldă a owner-ului; publicul rece vine, se uită și pleacă.
+Rămâne de verificat: utilizatori neconfirmați în Supabase Auth după 24 (s-au înscris dar
+n-au confirmat emailul?). Landing-ul nou e live din 28 sep (`be64a9f`, pushat) — n-a avut timp să conteze.
+**29 sep, verificat de owner:** ZERO conturi neconfirmate în Supabase Auth după 24 sep. Deci
+nimeni n-a încercat să se înscrie — pierderea e ÎNAINTE de formular (public și/sau landing),
+nu în fluxul de înscriere. Recomandarea dată: nicio rundă plătită nouă până nu se schimbă
+ceva testabil (publicul, sau landing-ul nou live din 28 sep); boost-ul își termină cei 60 lei.
