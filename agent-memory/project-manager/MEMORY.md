@@ -10,3 +10,4 @@
 - [First-charge settings are irreversible](first-charge-settings-are-irreversible.md) — invoice numbering/template/descriptor freeze at the first real payment; dashboard-only, so no gate catches them.
 - [Find the writer, not the reader](verify-a-feature-by-finding-its-writer.md) — a rendered state nothing ever writes is the commonest false "complete"; grep the write, and name which direction works.
 - [The repo is blind to real-world events](repo-is-blind-to-real-world-events.md) — refs can't tell you someone signed up; derive unwritten dates, but check the rule first (I once invented a trial deadline).
+- [Demo data is a test surface](demo-data-is-a-test-surface.md) — e2e and screenshots both ride the demo slice; a gap there makes a just-shipped feature open empty, and the seed fix may be local-only.

@@ -27,3 +27,13 @@ instructions, which carry a "last verified" date for exactly this reason.
 - Watch for the sibling failure: **a decision that changed in code but never reached
   the documents and the user-facing copy.** Worth checking as a category, because
   nothing breaks when copy goes stale — it just becomes false.
+- ⚠️ **A stale state file sitting modified-but-uncommitted can be deliberate.** On
+  2026-09-28 the user had held mine back on purpose until the work it described was
+  committed, so the file would not claim a shipped state that did not exist yet. So do
+  not treat "modified in the tree and out of date" as neglect and do not rush to
+  overwrite it — ask, or wait for the commit. Same rule in reverse: when the commit
+  lands, the file is now the thing blocking, so update it immediately.
+- When a whole block is overtaken within the same day, **mark the old block superseded
+  in place** (strike the heading, add a one-line banner pointing at the new one) rather
+  than deleting it. The old block's line-by-line diagnosis is often what made the fix
+  correct; what misleads is only its *conclusion*.
