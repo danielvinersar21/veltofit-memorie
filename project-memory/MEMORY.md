@@ -93,3 +93,4 @@
 - [Serverul de dev mânca procesorul](dev-server-runaway-cpu.md) — ✅ reparat 2026-09-02: era Turbopack. `npm run dev` are `--webpack` (1,1GB vs 4,5GB). Regula „agenții nu pot scrie cât rulează dev" era GREȘITĂ. `--webpack` e depreciat: retestează după fiecare upgrade de Next.
 - [Backup-ul memoriei](backlog-memory-has-no-backup.md) — ✅ făcut 22 sep: repo PRIVAT `veltofit-memorie`, automat la fiecare push + `npm run memory:backup`. Nu în repo-ul aplicației: notele au emailuri reale.
 - [Prioritățile din august](backlog-owner-priorities-2026-08.md) — top 5 de atunci: PWA offline → media exerciții → editare plan în wizard → poză profil → export raport. #4 livrat, #5 la Robert. Suprascris de nota de priorități din 26 sep.
+- [Pagina „Campanii” din admin](admin-campaigns-page.md) — LIVE 30 sep: jurnalul boost-urilor/reclamelor, cifre Meta de mână + contorul landing și conturile noi automat. Aici se trec rundele plătite.
