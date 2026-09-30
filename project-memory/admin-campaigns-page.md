@@ -23,3 +23,9 @@ Cerută de owner pe 2026-09-30: „o pagină dedicată pentru ad-uri/boost, ce �
 
 **Cum aplici:** când owner-ul aduce cifre noi de la o campanie, le trece EL în pagină (sau îl ghidezi);
 nu mai face documente/capturi pentru comparații.
+
+**30 sep, `079f928`: legată de „Cheltuieli".** Campaniile neplanificate apar în grupul Marketing ca plăți
+o dată, doar de citit, pe luna de start (ora București). „Campanii" = SINGURUL loc pentru banii de reclame.
+Owner-ul a șters din prod rândul manual „Meta Ads — campania din septembrie" (165,10) și a scos cei 300 lei
+de pe rândul „Instagram @veltofit.app" (înapoi pe gratuit), ca să nu se dubleze. Nu mai trece bani de
+reclame în Cheltuieli.
