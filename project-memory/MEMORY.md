@@ -65,7 +65,7 @@
 
 ## Creștere, conturi, marketing
 - [Cine e fiecare cont de antrenor](trainer-accounts-who-is-who.md) — Bogdan și Radu sunt PRIETENI invitați personal (de-asta scutiți); organici doar Crăciun și Dumitru. Lămurit de 2 ori, pierdut de 2 ori — nu re-deriva din emailuri.
-- [Prima reclamă Meta](meta-ads-first-campaign.md) — final 29 sep: 519 lei, 4 antrenori, TOȚI în primele 3 zile; zero după 24 sep cu ~434 vizite plătite. Cost real ~130 lei/antrenor, nu 41. Boost-ul tot bate reclama de 3× la cost pe vizită.
+- [Prima reclamă Meta](meta-ads-first-campaign.md) — final 29 sep: 519 lei, 4 antrenori, TOȚI în primele 3 zile; zero după 24 sep cu ~434 vizite plătite. Cost real ~130 lei/antrenor, nu 41. Boost-ul tot bate reclama de 3× la cost pe vizită. Contorul de pe landing e LIVE din 29 sep, pentru testul cu landing-ul nou.
 - [Proveniența antrenorilor](trainer-signup-source.md) — LIVE 21 sep (`5afff65`), verificat 17/17. Capcana locală cu Redirect URLs e în notă.
 - [Alertele pentru owner](owner-alerts.md) — LIVE 22 sep (`65f1433`): emailuri FĂRĂ nume/email/oraș (decizia lui), la contact@.
 - [Emailuri de onboarding în MailerLite](onboarding-emails-mailerlite.md) — ✅ LIVE 23 sep, dovedit cap-coadă. Capcana variabilei `MAILERLITE_API_KEY` deja existente din waitlist e în notă.

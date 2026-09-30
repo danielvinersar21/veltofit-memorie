@@ -117,3 +117,25 @@ n-au confirmat emailul?). Landing-ul nou e live din 28 sep (`be64a9f`, pushat) �
 nimeni n-a încercat să se înscrie — pierderea e ÎNAINTE de formular (public și/sau landing),
 nu în fluxul de înscriere. Recomandarea dată: nicio rundă plătită nouă până nu se schimbă
 ceva testabil (publicul, sau landing-ul nou live din 28 sep); boost-ul își termină cei 60 lei.
+
+**29 sep, după-amiază: contorul de pe landing e LIVE** (`2da8f22` db + `057530d` feat, pushate).
+Tabelul `landing_event_counts` e aplicat în prod (pre-flight 7/7, verificare 18/18). Cardul
+„Pagina de prezentare: până unde citesc" e în admin. Numără din momentul deploy-ului. Owner-ul
+a ales testul cu LANDING-UL NOU (live din 28 sep), cu același boost și același public.
+Boost-ul NOU se pornește DUPĂ ce cardul arată prima vizită reală. Când se reia analiza:
+citește cardul pe sursa „instagram" + „meta", compară cu 22–29 sep (1.079 vizitatori, 0 înscrieri după 24).
+Rămâne de verificat pe un iPhone real: apeși „Free" pe landing → „Butonul de pe cardul Free" crește cu 1.
+**29 sep, seara: verificat cap-coadă pe telefonul real** — 1 vizită + „Butonul de pe cardul Free" = 1 în card.
+Nu s-a pornit un boost nou: boost-ul „Cine sunt" (300 lei) încă rulează până pe ~1 oct și trimite deja
+pe landing-ul nou. Prima citire a cardului: ~1 oct, când se termină boost-ul (~60 lei, ~120 vizite rămase).
+Atunci se decide dacă se prelungește.
+**30 sep, 10:00 — prima zi de date din card** (toate sursele, include testul owner-ului: 1 vizită + Free):
+57 vizite → 48 (84%) au stat ≥1 s pe primul ecran → **9 (16%) au ajuns la a doua secțiune** →
+prețuri 6 (11%) → final 1. Butoane: 0 apăsări reale (singurul Free e testul owner-ului), inclusiv
+0 pe „Încearcă gratuit" din hero. Concluzia provizorie: decizia se ia PE PRIMUL ECRAN — citesc și
+nu derulează. Datele NU pot spune dacă cei care pleacă sunt ne-antrenori (filtru corect) sau
+antrenori neconvinși. Boost-ul „Cine sunt" (povestea fondatorului) → hero despre „muncă de birou":
+posibilă ruptură între ce promite postarea și ce vede omul. Recitire ~1 oct, la final de boost.
+Dispozitiv (30 sep, fără testul owner-ului): 52 telefon, 4 calculator → ~93% telefon. Primul ecran pe TELEFON e cel care decide.
+
+**Documentul de lucru (30 sep):** „Distribuție plătită — boost-uri, reclame și landing”, Claude Doc: https://claude.ai/code/artifact/fcf042b3-a0d9-437e-919a-53a598829f5e — are jurnalul de rezultate pe runde; se completează după fiecare rundă. Testul următor: boost pe reel-ul de prezentare din 2 oct, același public, ~30 lei/zi.
