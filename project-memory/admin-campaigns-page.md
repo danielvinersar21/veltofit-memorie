@@ -29,3 +29,10 @@ o dată, doar de citit, pe luna de start (ora București). „Campanii" = SINGUR
 Owner-ul a șters din prod rândul manual „Meta Ads — campania din septembrie" (165,10) și a scos cei 300 lei
 de pe rândul „Instagram @veltofit.app" (înapoi pe gratuit), ca să nu se dubleze. Nu mai trece bani de
 reclame în Cheltuieli.
+
+**30 sep, `ee5aae5` + `9d1f651`: cardurile din Cheltuieli.** Primul card = „Cost total" = plătit până azi:
+abonamente lună de lună de la `started_on` (altfel ziua `created_at`, București) până la `cancelled_on`,
++ plăți o dată active + campanii pornite. Owner-ul NU vrea să completeze date de start („data nu e
+importantă") — de-asta fallback-ul pe created_at. Data anulării e acum obligatorie. Cardul
+„Plăți o dată · <luna>" a fost scos la cererea lui.
+Owner-ul spune „fă direct commit și push" pentru munca din admin — nu-l mai întreba la fiecare pas mic.

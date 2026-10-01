@@ -94,3 +94,5 @@
 - [Backup-ul memoriei](backlog-memory-has-no-backup.md) — ✅ făcut 22 sep: repo PRIVAT `veltofit-memorie`, automat la fiecare push + `npm run memory:backup`. Nu în repo-ul aplicației: notele au emailuri reale.
 - [Prioritățile din august](backlog-owner-priorities-2026-08.md) — top 5 de atunci: PWA offline → media exerciții → editare plan în wizard → poză profil → export raport. #4 livrat, #5 la Robert. Suprascris de nota de priorități din 26 sep.
 - [Pagina „Campanii” din admin](admin-campaigns-page.md) — LIVE 30 sep: jurnalul boost-urilor/reclamelor, cifre Meta de mână + contorul landing și conturile noi automat. Aici se trec rundele plătite.
+- [Commit direct pentru admin](feedback-admin-direct-commit.md) — 30 sep: la cod de admin testat, „fă direct commit și push"; tot întrebi pentru migrări, pagini publice/legale.
+- [Problema reală: info împrăștiată + progres greu de calculat](feedback-core-problem-scattered-info.md) — 1 oct: owner-ul a respins titlul „ce a ridicat"; mesajul de bază e ușurarea muncii, nu detaliul de set.
