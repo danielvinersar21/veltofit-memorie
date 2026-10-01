@@ -139,3 +139,11 @@ posibilă ruptură între ce promite postarea și ce vede omul. Recitire ~1 oct,
 Dispozitiv (30 sep, fără testul owner-ului): 52 telefon, 4 calculator → ~93% telefon. Primul ecran pe TELEFON e cel care decide.
 
 **Documentul de lucru (30 sep):** „Distribuție plătită — boost-uri, reclame și landing”, Claude Doc: https://claude.ai/code/artifact/fcf042b3-a0d9-437e-919a-53a598829f5e — are jurnalul de rezultate pe runde; se completează după fiecare rundă. Testul următor: boost pe reel-ul de prezentare din 2 oct, același public, ~30 lei/zi.
+
+**1 oct: hero nou LIVE (`6ce8b8c`) înaintea boost-ului pe reel din 2 oct** — owner-ul a ales să nu aștepte
+testul curat („asta e clar că nu duce nicăieri"). Deci runda cu reel-ul măsoară PACHETUL: reel + hero nou.
+Titlu: „Știi unde e planul fiecărui client și cât a făcut." · butonul din hero → înscriere Free direct ·
+pe telefon captura „Plan activ" · contor nou „A văzut imaginea de sus". Reper înainte (29 sep–1 oct, 148 vizite):
+93% primul ecran, 18% a doua secțiune, 10% prețuri, 4 apăsări hero → 0 planuri.
+Deschis: aplicația NU calculează progresia de încărcare pe exercițiu — owner-ul zice că „progresul greu
+de calculat" e problema reală; de discutat ca funcție (nepus încă pe backlog).
